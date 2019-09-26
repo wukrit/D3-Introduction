@@ -31,7 +31,7 @@ d3.selectAll("#ex3 p")
 // to the corresponding index of the slected nodes. We can use this
 // to assign different values to sequential elements.
 d3.selectAll("#ex4 p")
-    .data([4, 8, 15])
+    .data([8, 15, 23, 45, 60])
         .style("font-size", d => d + "px")
         .style("color", "white")
 
