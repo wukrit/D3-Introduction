@@ -12,7 +12,7 @@ d3.selectAll("#ex1 p")
 
 // You can still select individual elements with D3 using `.select()`
 d3.select("body")
-    .style("background-color", "black")
+    .style("background-color", "blue")
 // D3 utilizes standard selectors such as 'p' 'div' 'body'
 // D3 selectors return a node or an array of nodes
 
@@ -49,3 +49,30 @@ d3.select("#ex5")
         .text(d => `I'm number ${d}!`)
         .style("color", "white")
 
+// Updating nodes are the default selection—the result of the data
+// operator. Thus, if you forget about the enter and exit selections,
+// you will automatically select only the elements for which there
+// exists corresponding data. A common pattern is to break the initial
+// selection into three parts: the updating nodes to modify, the
+// entering nodes to add, and the exiting nodes to remove.
+// Update…
+const ex6 = d3.select("#ex6")
+  .selectAll("p")
+  .data([4, 8, 15, 16, 23, 42])
+    .text(d => d)
+    .style("color", "white")
+
+// Enter…
+ex6.enter().append("p")
+    .text(d => d)
+    .style("color", "white")
+
+// Exit…
+ex6.exit().remove();
+
+// D3 can also handle transitions, such as fading the background
+// to black
+d3.select("body").transition()
+    .duration(750)
+    .style("background-color", "black")
+    
